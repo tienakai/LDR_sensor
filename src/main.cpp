@@ -1,18 +1,15 @@
 #include <Arduino.h>
 
-// put function declarations here:
-int myFunction(int, int);
+#define LDR_PIN 34  // Chân ADC đọc tín hiệu từ LDR
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  Serial.begin(115200);  // Mở UART để gửi dữ liệu
+  delay(1000);
+  Serial.println("Bắt đầu đo ánh sáng...");
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  int value = analogRead(34);   // đọc LDR
+  Serial.printf(">light:%d\n", value);
+  delay(2000);
 }
